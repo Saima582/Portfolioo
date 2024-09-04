@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Portfolio Website</title>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">Ansari Saima</a>
+
+        <nav>
+            <a href="#" class="active"> Home</a>
+            <a href="#" >Services</a>
+            <a href="#" >Skills</a>
+            <a href="#" >Education</a>
+            <a href="#" >Experience</a>
+            <a href="#" >Contact</a>
+        </nav>
+    </header>
+    <section class="home">
+        <div class="home-img">
+            <img src="my profile pic.png" alt="">
+        </div>
+        <div class="home-content">
+            <h1>Hi, It's <span>Saima</span></h1>
+            <h3 class="typing-text">I'm a <span></span></h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus labore dolores esse. Odit similique doloribus tenetur doloremque, sunt commodi in ipsa repudiandae debitis deleniti blanditiis quibusdam quaerat neque asperiores ea.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#"><i class="fa-brands fa-github"></i></a>
+                
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+            <a href="#" class="btn">Hire me</a>
+        </div>
+    </section>
+    <script>
+            document.addEventListener("DOMContentLoaded", function() {
+        const typingText = document.querySelector(".typing-text span");
+        const description = document.querySelector(".home-content p"); // Select the paragraph for description
+        const words = [
+            { text: "Web Developer", desc: "I specialize in creating dynamic and responsive websites using modern technologies. My focus is on building user-friendly and efficient web applications." },
+            { text: "Developer", desc: "I am dedicated to writing clean, efficient code and solving complex problems. My goal is to develop robust and scalable software solutions." },
+            { text: "Web Designer", desc: "I design visually appealing interfaces with a focus on user experience and engagement." },
+            { text: "MERN Stack Developer", desc: "I have expertise in MongoDB, Express.js, React, and Node.js. I build full-stack applications that are powerful and scalable." },
+            { text: "Engineer", desc: "I am an engineer with a strong problem-solving mindset. I apply analytical and creative skills to develop innovative solutions and improve processes." }
+        ];
+        let index = 0;
+        let currentWord = "";
+        let isDeleting = false;
+
+        function type() {
+            if (index < words.length) {
+                if (isDeleting) {
+                    currentWord = words[index].text.substring(0, currentWord.length - 1);
+                    typingText.textContent = currentWord;
+                    description.textContent = words[index].desc;
+                    if (currentWord === '') {
+                        isDeleting = false;
+                        index++;
+                        setTimeout(type, 500);
+                    } else {
+                        setTimeout(type, 100);
+                    }
+                } else {
+                    currentWord = words[index].text.substring(0, currentWord.length + 1);
+                    typingText.textContent = currentWord;
+                    description.textContent = words[index].desc;
+                    if (currentWord === words[index].text) {
+                        isDeleting = true;
+                        setTimeout(type, 2000);
+                    } else {
+                        setTimeout(type, 100);
+                    }
+                }
+            } else {
+                index = 0;
+                setTimeout(type, 500);
+            }
+        }
+
+        type();
+    });
+    </script>
+</body>
+</html>
